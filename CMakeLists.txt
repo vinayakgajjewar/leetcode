@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.27)
+project(leetcode)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(leetcode
+        1-two-sum.cpp
+        3-longest-substring-without-repeating-characters.cpp
+        104-max-depth-of-binary-tree.cpp
+        121-best-time-to-buy-and-sell-stock.cpp
+        125-valid-palindrome.cpp
+        200-number-of-islands.cpp
+        206-reverse-linked-list.cpp
+        226-invert-binary-tree.cpp
+        242-valid-anagram.cpp
+        235-lowest-common-ancestor-of-a-binary-search-tree.cpp
+        383-ransom-note.cpp
+        54-spiral-matrix.cpp
+        542-01-matrix.cpp
+        733-flood-fill.cpp)
