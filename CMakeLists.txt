@@ -7,6 +7,8 @@ add_executable(leetcode
         1-two-sum.cpp
         3-longest-substring-without-repeating-characters.cpp
         20-valid-parentheses.cpp
+        100-same-tree.cpp
+        102-binary-tree-level-order-traversal.cpp
         104-max-depth-of-binary-tree.cpp
         121-best-time-to-buy-and-sell-stock.cpp
         125-valid-palindrome.cpp
