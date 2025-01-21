@@ -18,6 +18,7 @@ add_executable(leetcode
         242-valid-anagram.cpp
         235-lowest-common-ancestor-of-a-binary-search-tree.cpp
         383-ransom-note.cpp
+        424-longest-repeating-character-replacement.cpp
         54-spiral-matrix.cpp
         542-01-matrix.cpp
         733-flood-fill.cpp)
