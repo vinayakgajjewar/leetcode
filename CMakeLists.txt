@@ -23,6 +23,10 @@ add_executable(leetcode
         542-01-matrix.cpp
         733-flood-fill.cpp)
 
+add_executable(5-longest-palindromic-substring
+        5-longest-palindromic-substring.cpp
+)
+
 add_executable(49-group-anagrams
         49-group-anagrams.cpp
 )
