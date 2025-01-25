@@ -22,3 +22,19 @@ add_executable(leetcode
         54-spiral-matrix.cpp
         542-01-matrix.cpp
         733-flood-fill.cpp)
+
+add_executable(49-group-anagrams
+        49-group-anagrams.cpp
+)
+
+add_executable(53-maximum-subarray
+        53-maximum-subarray.cpp
+)
+
+add_executable(238-product-of-array-except-self
+        238-product-of-array-except-self.cpp
+)
+
+add_executable(704-binary-search
+        704-binary-search.cpp
+)
