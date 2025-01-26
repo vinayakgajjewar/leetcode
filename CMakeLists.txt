@@ -7,6 +7,7 @@ add_executable(leetcode
         1-two-sum.cpp
         3-longest-substring-without-repeating-characters.cpp
         20-valid-parentheses.cpp
+        23-merge-k-sorted-lists.cpp
         100-same-tree.cpp
         102-binary-tree-level-order-traversal.cpp
         104-max-depth-of-binary-tree.cpp
