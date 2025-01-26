@@ -40,6 +40,10 @@ add_executable(238-product-of-array-except-self
         238-product-of-array-except-self.cpp
 )
 
+add_executable(347-top-k-frequent-elements
+        347-top-k-frequent-elements.cpp
+)
+
 add_executable(704-binary-search
         704-binary-search.cpp
 )
