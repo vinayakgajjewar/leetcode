@@ -42,3 +42,7 @@ add_executable(238-product-of-array-except-self
 add_executable(704-binary-search
         704-binary-search.cpp
 )
+
+add_executable(973-k-closest-points-to-origin
+        973-k-closest-points-to-origin.cpp
+)
