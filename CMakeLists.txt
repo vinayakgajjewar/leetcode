@@ -36,6 +36,14 @@ add_executable(53-maximum-subarray
         53-maximum-subarray.cpp
 )
 
+add_executable(232-implement-queue-using-stacks
+        232-implement-queue-using-stacks.cpp
+)
+
+add_executable(225-implement-stack-using-queues
+        225-implement-stack-using-queues.cpp
+)
+
 add_executable(238-product-of-array-except-self
         238-product-of-array-except-self.cpp
 )
