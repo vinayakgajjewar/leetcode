@@ -52,6 +52,10 @@ add_executable(347-top-k-frequent-elements
         347-top-k-frequent-elements.cpp
 )
 
+add_executable(417-pacific-atlantic-water-flow
+        417-pacific-atlantic-water-flow.cpp
+)
+
 add_executable(704-binary-search
         704-binary-search.cpp
 )
