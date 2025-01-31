@@ -13,7 +13,6 @@ add_executable(leetcode
         104-max-depth-of-binary-tree.cpp
         121-best-time-to-buy-and-sell-stock.cpp
         125-valid-palindrome.cpp
-        200-number-of-islands.cpp
         206-reverse-linked-list.cpp
         226-invert-binary-tree.cpp
         242-valid-anagram.cpp
@@ -34,6 +33,10 @@ add_executable(49-group-anagrams
 
 add_executable(53-maximum-subarray
         53-maximum-subarray.cpp
+)
+
+add_executable(200-number-of-islands
+        200-number-of-islands.cpp
 )
 
 add_executable(232-implement-queue-using-stacks
