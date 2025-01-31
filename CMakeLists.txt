@@ -59,3 +59,7 @@ add_executable(704-binary-search
 add_executable(973-k-closest-points-to-origin
         973-k-closest-points-to-origin.cpp
 )
+
+add_executable(994-rotting-oranges
+        994-rotting-oranges.cpp
+)
