@@ -51,6 +51,10 @@ add_executable(238-product-of-array-except-self
         238-product-of-array-except-self.cpp
 )
 
+add_executable(310-minimum-height-tree
+        310-minimum-height-tree.cpp
+)
+
 add_executable(347-top-k-frequent-elements
         347-top-k-frequent-elements.cpp
 )
