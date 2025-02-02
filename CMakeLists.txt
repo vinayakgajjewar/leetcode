@@ -27,6 +27,10 @@ add_executable(5-longest-palindromic-substring
         5-longest-palindromic-substring.cpp
 )
 
+add_executable(15-3sum
+        15-3sum.cpp
+)
+
 add_executable(49-group-anagrams
         49-group-anagrams.cpp
 )
@@ -37,6 +41,10 @@ add_executable(53-maximum-subarray
 
 add_executable(200-number-of-islands
         200-number-of-islands.cpp
+)
+
+add_executable(217-contains-duplicate
+        217-contains-duplicate.cpp
 )
 
 add_executable(232-implement-queue-using-stacks
