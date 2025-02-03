@@ -39,6 +39,10 @@ add_executable(53-maximum-subarray
         53-maximum-subarray.cpp
 )
 
+add_executable(70-climbing-stairs
+        70-climbing-stairs.cpp
+)
+
 add_executable(200-number-of-islands
         200-number-of-islands.cpp
 )
@@ -73,6 +77,10 @@ add_executable(417-pacific-atlantic-water-flow
 
 add_executable(704-binary-search
         704-binary-search.cpp
+)
+
+add_executable(876-middle-of-the-linked-list
+        876-middle-of-the-linked-list.cpp
 )
 
 add_executable(973-k-closest-points-to-origin
