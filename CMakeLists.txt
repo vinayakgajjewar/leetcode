@@ -75,6 +75,10 @@ add_executable(347-top-k-frequent-elements
         347-top-k-frequent-elements.cpp
 )
 
+add_executable(409-longest-palindrome
+        409-longest-palindrome.cpp
+)
+
 add_executable(417-pacific-atlantic-water-flow
         417-pacific-atlantic-water-flow.cpp
 )
