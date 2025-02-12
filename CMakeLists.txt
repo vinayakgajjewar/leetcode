@@ -39,6 +39,10 @@ add_executable(53-maximum-subarray
         53-maximum-subarray.cpp
 )
 
+add_executable(57-insert-interval
+        57-insert-interval.cpp
+)
+
 add_executable(70-climbing-stairs
         70-climbing-stairs.cpp
 )
@@ -49,6 +53,10 @@ add_executable(169-majority-element
 
 add_executable(200-number-of-islands
         200-number-of-islands.cpp
+)
+
+add_executable(207-course-schedule
+        207-course-schedule.cpp
 )
 
 add_executable(217-contains-duplicate
