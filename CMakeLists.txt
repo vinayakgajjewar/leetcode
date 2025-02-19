@@ -47,6 +47,10 @@ add_executable(70-climbing-stairs
         70-climbing-stairs.cpp
 )
 
+add_executable(134-gas-station
+        134-gas-station.cpp
+)
+
 add_executable(169-majority-element
         169-majority-element.cpp
 )
