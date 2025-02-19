@@ -43,6 +43,10 @@ add_executable(57-insert-interval
         57-insert-interval.cpp
 )
 
+add_executable(67-add-binary
+        67-add-binary.cpp
+)
+
 add_executable(70-climbing-stairs
         70-climbing-stairs.cpp
 )
