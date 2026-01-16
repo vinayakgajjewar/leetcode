@@ -1,3 +1,11 @@
+/*
+ * 238-product-of-array-except-self.cpp
+ *
+ * https://leetcode.com/problems/product-of-array-except-self/
+ *
+ *
+ */
+
 #include <iostream>
 #include <vector>
 
@@ -5,6 +13,29 @@ using namespace std;
 
 class Solution {
 public:
+
+    /*
+     * This solution has an O(1) space complexity. We make a forward pass
+     * through the array to compute the product before a given index, and then
+     * we make a backwards pass to compute the product after a given index. This
+     * is the solution given by LeetCode Meditations.
+     */
+    vector<int> productExceptSelf1(vector<int> &nums) {
+        int n = (int) nums.size();
+        vector<int> result(n, 1);
+        int prefix = 1;
+        for (int i = 0; i < nums.size(); i++) {
+            result[i] *= prefix;
+            prefix *= nums[i];
+        }
+        int postfix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            result[i] *= postfix;
+            postfix *= nums[i];
+        }
+        return result;
+    }
+
     static vector<int> productExceptSelf(vector<int> &nums) {
 
         /*
