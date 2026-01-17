@@ -36,6 +36,35 @@ public:
         return result;
     }
 
+    /*
+     * This is the solution with an O(n) space complexity. In this solution, we
+     * maintain two additional data structures: one to keep track of the product
+     * before a given index and one to keep track of the product after a given
+     * index.
+     *
+     * Tip: whenever you have an array as an input, it is always useful to extract
+     * its size into an integer variable first things first.
+     */
+    vector<int> productExceptSelf2(vector<int> &nums) {
+        int n = (int) nums.size();
+
+        vector<int> product_before_self(n, 1);
+        for (int i = 1; i < n; i++) {
+            product_before_self[i] = product_before_self[i - 1] * nums[i - 1];
+        }
+
+        vector<int> product_after_self(n, 1);
+        for (int i = n - 2; i >= 0; i--) {
+            product_after_self[i] = product_after_self[i + 1] * nums[i + 1];
+        }
+
+        vector<int> product_except_self(n);
+        for (int i = 0; i < n; i++) {
+            product_except_self[i] = product_before_self[i] * product_after_self[i];
+        }
+        return product_except_self;
+    }
+
     static vector<int> productExceptSelf(vector<int> &nums) {
 
         /*
