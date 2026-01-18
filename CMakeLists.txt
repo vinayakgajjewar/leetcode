@@ -13,6 +13,7 @@ add_executable(leetcode
         104-max-depth-of-binary-tree.cpp
         121-best-time-to-buy-and-sell-stock.cpp
         125-valid-palindrome.cpp
+        128-longest-consecutive-sequence.cpp
         198-house-robber.cpp
         206-reverse-linked-list.cpp
         213-house-robber-ii.cpp
