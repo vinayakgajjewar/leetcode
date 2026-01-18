@@ -18,6 +18,10 @@ public:
      * sorting algorithm. This solution does give us the basic pattern for finding
      * the length of the longest consecutive sequence once we have a sorted unique
      * vector, though.
+     *
+     * Important to remember: the intuition behind the counting algorithm here is
+     * to increment the count at each index and then reset it back to 0 if the
+     * number after this one is not contiguous.
      */
     int longestConsecutive_naive(vector<int> &nums) {
         int n = (int) nums.size();
