@@ -9,6 +9,7 @@ add_executable(leetcode
         20-valid-parentheses.cpp
         23-merge-k-sorted-lists.cpp
         39-combination-sum.cpp
+        79-word-search.cpp
         100-same-tree.cpp
         102-binary-tree-level-order-traversal.cpp
         104-max-depth-of-binary-tree.cpp
