@@ -10,16 +10,23 @@
 
 using namespace std;
 
+/*
+ * This is the tricky part of this problem: you need to erase the current cell
+ * from the visited set after you do DFS on all the neighbors. This is the essence
+ * of backtracking!
+ *
+ * Note also that it is necessary to reverse the word if the last letter of the
+ * word is less common than the first letter of the word. LeetCode will give you
+ * a "Time Limit Exceeded" otherwise.
+ *
+ * Also note how the lambda capture is used here to avoid making another function
+ * with a bunch of parameters to pass in.
+ */
 class Solution {
 public:
-    // this is what tripped me up: you need to erase the current cell from the visited set!
-    // also: this is cool that you can use lambda captures "[&]" to capture all the variables
-    // also: it is necessary to implement the optimization to reverse the word if
-    // the end letter is less common than the first letter to get this to pass
-    // on leetcode.
     bool exist(vector<vector<char>> &board, string word) {
-        int rows = board.size();
-        int cols = board[0].size();
+        int rows = (int) board.size();
+        int cols = (int) board[0].size();
         unordered_set<string> visited;
         auto dfs = [&](int r, int c, int i, auto &dfs) -> bool {
             if (i == word.length()) return true;
@@ -32,7 +39,6 @@ public:
             if (dfs(r - 1, c, i + 1, dfs)) return true;
             if (dfs(r, c + 1, i + 1, dfs)) return true;
             if (dfs(r, c - 1, i + 1, dfs)) return true;
-            // this is necessary for backtracking!!!!
             visited.erase(to_string(r) + "," + to_string(c));
             return false;
         };
