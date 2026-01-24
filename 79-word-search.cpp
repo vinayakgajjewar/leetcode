@@ -21,6 +21,11 @@ using namespace std;
  *
  * Also note how the lambda capture is used here to avoid making another function
  * with a bunch of parameters to pass in.
+ *
+ * Don't forget that the method to delete from an unordered_set is erase().
+ *
+ * Also, don't forget that in the dfs() function, checking if we have reached the
+ * end of the word needs to be the very first check.
  */
 class Solution {
 public:
