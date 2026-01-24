@@ -12,15 +12,11 @@ struct ListNode {
 class Solution {
 public:
     ListNode *reverseListRecursive(ListNode *head) {
-
-        // Base case.
         if (!head || !head->next)
             return head;
-
-        // Recursive case.
         ListNode *curr = reverseListRecursive(head->next);
         ListNode *newHead = curr;
-        while (curr->next != nullptr) {
+        while (curr->next) {
             curr = curr->next;
         }
         curr->next = head;
@@ -28,6 +24,10 @@ public:
         return newHead;
     }
 
+    /*
+     * Don't forget to set the next pointer of the old head to nullptr! I forgot
+     * to do that.
+     */
     ListNode *reverseList(ListNode *head) {
         if (!head || !head->next) {
             return head;
@@ -38,8 +38,6 @@ public:
         while (front) {
             ListNode *temp = front->next;
             front->next = back;
-
-            // Increment our pointers.
             back = front;
             front = temp;
         }
