@@ -9,6 +9,10 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+/*
+ * For both the iterative and the recursive solutions, do not forget that the tail
+ * of the list needs to explicitly be set to point to NULL.
+ */
 class Solution {
 public:
     ListNode *reverseListRecursive(ListNode *head) {
