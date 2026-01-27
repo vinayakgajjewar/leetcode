@@ -7,6 +7,7 @@ add_executable(leetcode
         1-two-sum.cpp
         3-longest-substring-without-repeating-characters.cpp
         20-valid-parentheses.cpp
+        21-merge-two-sorted-lists.cpp
         23-merge-k-sorted-lists.cpp
         39-combination-sum.cpp
         79-word-search.cpp
