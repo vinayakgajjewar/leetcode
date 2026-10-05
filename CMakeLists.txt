@@ -29,6 +29,11 @@ add_executable(leetcode
         542-01-matrix.cpp
         733-flood-fill.cpp)
 
+add_executable(3-longest-substring-without-repeating-characters
+
+3-longest-substring-without-repeating-characters.cpp
+)
+
 add_executable(5-longest-palindromic-substring
         5-longest-palindromic-substring.cpp
 )
