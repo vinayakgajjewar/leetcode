@@ -69,4 +69,40 @@ class Solution
         }
         return combos;
     }
+
+    vector<string> letterCombinations(string digits)
+    {
+        // im going to attempt to do this the iterative way, which apparently
+        // has a runtime complexity of O(n * 4^n). the gist of the solution is
+        // to, for each digit in digits, for each current combination, append
+        // each possible letter for that digit. you can use a temp list to do
+        // this cleanly. apparently the key to understanding the time complexity
+        // is to realize that the number of combinations grows exponentially as
+        // you add more digits.
+        if (digits.empty())
+            return {};
+
+        // note the initial string
+        vector<string> combos = {""};
+
+        // clever way of mapping where the key is the index into the vector
+        vector<string> mapping = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+        // this is the loop that's O(n)
+        for (char digit : digits)
+        {
+            vector<string> temp;
+
+            // populate the temp vector using the current set of combos
+            for (string combo : combos)
+            {
+                for (char c : mapping[digit - '0'])
+                {
+                    temp.push_back(combo + c);
+                }
+            }
+            combos = temp;
+        }
+        return combos;
+    }
 };
