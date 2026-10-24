@@ -79,4 +79,41 @@ class Solution
         }
         return false;
     }
+
+    // This is a slightly different way to do the sliding window where you
+    // calculate the left pointer directly from the right pointer instead of
+    // maintaining it separately. It's a bit easier to reason about in my
+    // opinion.
+    bool checkInclusion(string s1, string s2)
+    {
+        int m = s1.size();
+        int n = s2.size();
+        if (m > n)
+            return false;
+
+        // create s1 freq table and check first substring of s2
+        unordered_map<char, int> s1_freqs;
+        unordered_map<char, int> s2_freqs;
+        for (int i = 0; i < m; i++)
+        {
+            s1_freqs[s1.at(i)]++;
+            s2_freqs[s2.at(i)]++;
+        }
+        if (s1_freqs == s2_freqs)
+            return true;
+
+        for (int right = m; right < n; right++)
+        {
+            int left = right - m;
+            s2_freqs[s2.at(right)]++;
+            s2_freqs[s2.at(left)]--;
+            if (s2_freqs[s2.at(left)] == 0)
+            {
+                s2_freqs.erase(s2.at(left));
+            }
+            if (s1_freqs == s2_freqs)
+                return true;
+        }
+        return false;
+    }
 };
