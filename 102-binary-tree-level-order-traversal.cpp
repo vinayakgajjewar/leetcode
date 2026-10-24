@@ -50,3 +50,5 @@ public:
         return max(max_depth(root->left), max_depth(root->right)) + 1;
     }
 };
+
+int main() {}

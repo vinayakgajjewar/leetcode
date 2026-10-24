@@ -36,3 +36,5 @@ public:
         return {};
     }
 };
+
+int main() {}
