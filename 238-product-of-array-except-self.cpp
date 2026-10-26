@@ -11,25 +11,28 @@
 
 using namespace std;
 
-class Solution {
-public:
-
+class Solution
+{
+  public:
     /*
      * This solution has an O(1) space complexity. We make a forward pass
      * through the array to compute the product before a given index, and then
      * we make a backwards pass to compute the product after a given index. This
      * is the solution given by LeetCode Meditations.
      */
-    vector<int> productExceptSelf1(vector<int> &nums) {
-        int n = (int) nums.size();
+    vector<int> productExceptSelf1(vector<int> &nums)
+    {
+        int n = (int)nums.size();
         vector<int> result(n, 1);
         int prefix = 1;
-        for (int i = 0; i < nums.size(); i++) {
+        for (int i = 0; i < nums.size(); i++)
+        {
             result[i] *= prefix;
             prefix *= nums[i];
         }
         int postfix = 1;
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--)
+        {
             result[i] *= postfix;
             postfix *= nums[i];
         }
@@ -45,27 +48,32 @@ public:
      * Tip: whenever you have an array as an input, it is always useful to extract
      * its size into an integer variable first things first.
      */
-    vector<int> productExceptSelf2(vector<int> &nums) {
-        int n = (int) nums.size();
+    vector<int> productExceptSelf2(vector<int> &nums)
+    {
+        int n = (int)nums.size();
 
         vector<int> product_before_self(n, 1);
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; i++)
+        {
             product_before_self[i] = product_before_self[i - 1] * nums[i - 1];
         }
 
         vector<int> product_after_self(n, 1);
-        for (int i = n - 2; i >= 0; i--) {
+        for (int i = n - 2; i >= 0; i--)
+        {
             product_after_self[i] = product_after_self[i + 1] * nums[i + 1];
         }
 
         vector<int> product_except_self(n);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             product_except_self[i] = product_before_self[i] * product_after_self[i];
         }
         return product_except_self;
     }
 
-    static vector<int> productExceptSelf(vector<int> &nums) {
+    static vector<int> productExceptSelf(vector<int> &nums)
+    {
 
         /*
          * Maintain additional data structures to cache the results of various
@@ -79,33 +87,106 @@ public:
 
         vector<int> products_before_index(n);
         int product_before_index = 1;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             products_before_index[i] = product_before_index;
             product_before_index *= nums[i];
         }
 
         vector<int> products_after_index(n);
         int product_after_index = 1;
-        for (int i = n - 1; i >= 0; --i) {
+        for (int i = n - 1; i >= 0; --i)
+        {
             products_after_index[i] = product_after_index;
             product_after_index *= nums[i];
         }
 
         vector<int> product_except_self(n);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             product_except_self[i] = products_before_index[i] * products_after_index[i];
         }
         return product_except_self;
     }
 };
 
-void run_test(vector<int> &input) {
+// This is my solution from 2026/10/26. I think there is a way to do this
+// without using the two intermediate arrays, though.
+class Solution2
+{
+  public:
+    vector<int> productExceptSelf(vector<int> &nums)
+    {
+        int n = nums.size();
+        // first, create an array that contains the product of everything before
+        // a certain index. then, create an array that contains the product of
+        // everything after a certain index. then, for each index, you can
+        // multiply those values together. this is O(N) time complexity and O(n)
+        // space complexity. todo: how to do this in O(1) space complexity?
+
+        int running_prod_before = 1;
+        vector<int> prod_before_self(n);
+        for (int i = 0; i < n; i++)
+        {
+            prod_before_self[i] = running_prod_before;
+            running_prod_before = running_prod_before * nums[i];
+        }
+
+        int running_prod_after = 1;
+        vector<int> prod_after_self(n);
+        for (int i = n - 1; i >= 0; i--)
+        {
+            prod_after_self[i] = running_prod_after;
+            running_prod_after = running_prod_after * nums[i];
+        }
+
+        vector<int> prod_except_self(n);
+        for (int i = 0; i < n; i++)
+        {
+            prod_except_self[i] = prod_before_self[i] * prod_after_self[i];
+        }
+        return prod_except_self;
+    }
+};
+
+// This is my solution from 2026/10/26 that uses O(1) extra space complexity
+// (not counting the output vector).
+class Solution3
+{
+  public:
+    vector<int> productExceptSelf(vector<int> &nums)
+    {
+        int n = nums.size();
+        vector<int> prod_except_self(n, 1);
+
+        int running_prod_before = 1;
+        for (int i = 0; i < n; i++)
+        {
+            prod_except_self[i] *= running_prod_before;
+            running_prod_before *= nums[i];
+        }
+
+        int running_prod_after = 1;
+        for (int i = n - 1; i >= 0; i--)
+        {
+            prod_except_self[i] *= running_prod_after;
+            running_prod_after *= nums[i];
+        }
+
+        return prod_except_self;
+    }
+};
+
+void run_test(vector<int> &input)
+{
     vector<int> answer = Solution::productExceptSelf(input);
-    for (int elem: answer) cout << elem << " ";
+    for (int elem : answer)
+        cout << elem << " ";
     cout << endl;
 }
 
-int main() {
+int main()
+{
 
     /*
      * Expected output: 24 12 8 6
