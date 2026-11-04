@@ -2,8 +2,9 @@
 
 using namespace std;
 
-class Solution {
-public:
+class Solution
+{
+  public:
     int uniquePaths(int m, int n)
     {
         // at each cell, you have 2 choices: go down, or go right, respecting
@@ -27,8 +28,10 @@ public:
         vector<vector<int>> uniq_paths(m, vector<int>(n, 1));
 
         // only looping through non-trivial (non-1) cells
-        for (int i = m - 2; i >= 0; i--) {
-            for (int j = n - 2; j >= 0; j--) {
+        for (int i = m - 2; i >= 0; i--)
+        {
+            for (int j = n - 2; j >= 0; j--)
+            {
                 uniq_paths[i][j] = uniq_paths[i][j + 1] + uniq_paths[i + 1][j];
             }
         }

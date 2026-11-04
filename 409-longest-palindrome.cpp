@@ -2,9 +2,11 @@
 
 using namespace std;
 
-class Solution {
-public:
-    static int longestPalindrome(string &s) {
+class Solution
+{
+  public:
+    static int longestPalindrome(string &s)
+    {
 
         /*
          * In order to build palindromes with length longer than 1, we need to
@@ -19,29 +21,37 @@ public:
         /*
          * Handle the trivial case.
          */
-        if (s.size() == 1) return 1;
+        if (s.size() == 1)
+            return 1;
 
         std::unordered_map<char, int> char_freqs;
-        for (char c: s) {
+        for (char c : s)
+        {
             ++char_freqs[c];
         }
 
         bool odd_length_palindrome = false;
         int max_length = 0;
-        for (auto &[c, freq]: char_freqs) {
-            if (freq % 2 == 0) {
+        for (auto &[c, freq] : char_freqs)
+        {
+            if (freq % 2 == 0)
+            {
                 max_length += freq;
-            } else {
+            }
+            else
+            {
                 max_length += freq - 1;
                 odd_length_palindrome = true;
             }
         }
-        if (odd_length_palindrome) ++max_length;
+        if (odd_length_palindrome)
+            ++max_length;
         return max_length;
     }
 };
 
-int main() {
+int main()
+{
     string input1 = "abccccdd";
     int output1 = Solution::longestPalindrome(input1);
     assert(output1 == 7);

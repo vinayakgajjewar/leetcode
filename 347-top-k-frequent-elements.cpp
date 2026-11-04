@@ -21,46 +21,55 @@
 
 using namespace std;
 
-class Solution {
-public:
-    static vector<int> topKFrequent(vector<int> &nums, int k) {
+class Solution
+{
+  public:
+    static vector<int> topKFrequent(vector<int> &nums, int k)
+    {
 
         unordered_map<int, int> frequencies;
-        for (int num: nums) {
+        for (int num : nums)
+        {
             frequencies[num]++;
         }
 
         priority_queue<pair<int, int>, vector<pair<int, int>>, compare> largest_frequencies;
-        for (auto &[num, freq]: frequencies) {
+        for (auto &[num, freq] : frequencies)
+        {
             largest_frequencies.emplace(num, freq);
         }
 
         vector<int> k_most_frequent;
-        for (int i = 0; i < k; ++i) {
+        for (int i = 0; i < k; ++i)
+        {
             k_most_frequent.push_back(largest_frequencies.top().first);
             largest_frequencies.pop();
         }
         return k_most_frequent;
     }
 
-private:
-
-    struct compare {
-        bool operator()(pair<int, int> a, pair<int, int> b) {
+  private:
+    struct compare
+    {
+        bool operator()(pair<int, int> a, pair<int, int> b)
+        {
             return a.second < b.second;
         }
     };
 };
 
-void run_test_case(vector<int> input, int k) {
+void run_test_case(vector<int> input, int k)
+{
     vector<int> output = Solution::topKFrequent(input, k);
-    for (int num: output) {
+    for (int num : output)
+    {
         cout << num << " ";
     }
     cout << endl;
 }
 
-int main() {
+int main()
+{
     vector<int> input1 = {1, 1, 1, 2, 2, 3};
     int k1 = 2;
     run_test_case(input1, k1);

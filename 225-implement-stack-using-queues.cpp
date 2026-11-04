@@ -2,9 +2,11 @@
 
 using namespace std;
 
-class MyStack {
-public:
-    MyStack() {
+class MyStack
+{
+  public:
+    MyStack()
+    {
         a_is_curr = true;
     }
 
@@ -14,25 +16,35 @@ public:
      * tells us which queue we are currently using.
      */
 
-    void push(int x) {
-        if (a_is_curr) {
+    void push(int x)
+    {
+        if (a_is_curr)
+        {
             queue_a.push(x);
-        } else {
+        }
+        else
+        {
             queue_b.push(x);
         }
     }
 
-    int pop() {
+    int pop()
+    {
         int val;
-        if (a_is_curr) {
-            while (queue_a.size() > 1) {
+        if (a_is_curr)
+        {
+            while (queue_a.size() > 1)
+            {
                 queue_b.push(queue_a.front());
                 queue_a.pop();
             }
             val = queue_a.front();
             queue_a.pop();
-        } else {
-            while (queue_b.size() > 1) {
+        }
+        else
+        {
+            while (queue_b.size() > 1)
+            {
                 queue_a.push(queue_b.front());
                 queue_b.pop();
             }
@@ -43,18 +55,24 @@ public:
         return val;
     }
 
-    int top() {
+    int top()
+    {
         int val;
-        if (a_is_curr) {
-            while (queue_a.size() > 1) {
+        if (a_is_curr)
+        {
+            while (queue_a.size() > 1)
+            {
                 queue_b.push(queue_a.front());
                 queue_a.pop();
             }
             val = queue_a.front();
             queue_b.push(val);
             queue_a.pop();
-        } else {
-            while (queue_b.size() > 1) {
+        }
+        else
+        {
+            while (queue_b.size() > 1)
+            {
                 queue_a.push(queue_b.front());
                 queue_b.pop();
             }
@@ -66,11 +84,12 @@ public:
         return val;
     }
 
-    bool empty() {
+    bool empty()
+    {
         return (queue_a.empty() && queue_b.empty());
     }
 
-private:
+  private:
     queue<int> queue_a;
     queue<int> queue_b;
     bool a_is_curr;

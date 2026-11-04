@@ -1,27 +1,32 @@
-#include <vector>
-#include <unordered_map>
 #include <cassert>
+#include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-class Solution {
-public:
-    static bool containsDuplicate(vector<int> &nums) {
+class Solution
+{
+  public:
+    static bool containsDuplicate(vector<int> &nums)
+    {
 
         /*
          * Use an unordered map (hash table) to store values that we've seen
          * before.
          */
         unordered_map<int, int> freqs;
-        for (int num: nums) {
+        for (int num : nums)
+        {
             ++freqs[num];
-            if (freqs[num] > 1) return true;
+            if (freqs[num] > 1)
+                return true;
         }
         return false;
     }
 };
 
-int main() {
+int main()
+{
     vector<int> input1 = {1, 2, 3, 1};
     bool output1 = Solution::containsDuplicate(input1);
     assert(output1 == true);

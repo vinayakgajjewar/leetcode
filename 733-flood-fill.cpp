@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution
 {
-public:
+  public:
     vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int color)
     {
         if (image[sr][sc] == color)

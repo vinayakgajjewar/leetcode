@@ -3,20 +3,29 @@
 
 using namespace std;
 
-struct ListNode {
+struct ListNode
+{
     int val;
     ListNode *next;
 
-    ListNode() : val(0), next(nullptr) {}
+    ListNode() : val(0), next(nullptr)
+    {
+    }
 
-    explicit ListNode(int x) : val(x), next(nullptr) {}
+    explicit ListNode(int x) : val(x), next(nullptr)
+    {
+    }
 
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x, ListNode *next) : val(x), next(next)
+    {
+    }
 };
 
-class Solution {
-public:
-    static ListNode *mergeKLists(vector<ListNode *> &lists) {
+class Solution
+{
+  public:
+    static ListNode *mergeKLists(vector<ListNode *> &lists)
+    {
         /*
          * This is the type of problem that benefits a lot from using a priority
          * queue. Iterate through each element in each linked list and add its
@@ -30,9 +39,11 @@ public:
          * integers, but either one is fine.
          */
         priority_queue<int, vector<int>, greater<>> list_elements;
-        for (ListNode *head: lists) {
+        for (ListNode *head : lists)
+        {
             ListNode *curr = head;
-            while (curr) {
+            while (curr)
+            {
                 list_elements.push(curr->val);
                 curr = curr->next;
             }
@@ -44,7 +55,8 @@ public:
          */
         auto *head = new ListNode(-1);
         ListNode *tail = head;
-        while (!list_elements.empty()) {
+        while (!list_elements.empty())
+        {
             auto *curr = new ListNode(list_elements.top());
             tail->next = curr;
             tail = curr;

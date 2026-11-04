@@ -19,13 +19,16 @@
 
 using namespace std;
 
-class Solution {
-public:
-    int rob_impl(vector<int> &max_at_house, int house, const vector<int> &house_values) {
+class Solution
+{
+  public:
+    int rob_impl(vector<int> &max_at_house, int house, const vector<int> &house_values)
+    {
         if (house == 0)
             return house_values.at(0);
 
-        if (house == 1) {
+        if (house == 1)
+        {
             return max(house_values[0], house_values[1]);
         }
 
@@ -34,10 +37,12 @@ public:
         return max(max_if_robbed, max_if_not_robbed);
     }
 
-    int rob(vector<int> &nums) {
+    int rob(vector<int> &nums)
+    {
 
         vector<int> max_at_house(nums.size(), 0);
-        for (int i = 0; i < nums.size(); i++) {
+        for (int i = 0; i < nums.size(); i++)
+        {
             max_at_house[i] = rob_impl(max_at_house, i, nums);
         }
         return max_at_house[nums.size() - 1];

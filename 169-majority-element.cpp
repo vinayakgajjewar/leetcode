@@ -3,18 +3,22 @@
 
 using namespace std;
 
-class Solution {
-public:
-    int majorityElement(vector<int> &nums) {
+class Solution
+{
+  public:
+    int majorityElement(vector<int> &nums)
+    {
 
         /*
          * Use an unordered map (hash table) to track element frequencies.
          */
         unordered_map<int, int> freqs;
         int majority = nums.size() / 2;
-        for (int num: nums) {
+        for (int num : nums)
+        {
             ++freqs[num];
-            if (freqs[num] > majority) return num;
+            if (freqs[num] > majority)
+                return num;
         }
 
         /*

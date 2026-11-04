@@ -27,39 +27,55 @@ using namespace std;
  * Also, don't forget that in the dfs() function, checking if we have reached the
  * end of the word needs to be the very first check.
  */
-class Solution {
-public:
-    bool exist(vector<vector<char>> &board, string word) {
-        int rows = (int) board.size();
-        int cols = (int) board[0].size();
+class Solution
+{
+  public:
+    bool exist(vector<vector<char>> &board, string word)
+    {
+        int rows = (int)board.size();
+        int cols = (int)board[0].size();
         unordered_set<string> visited;
         auto dfs = [&](int r, int c, int i, auto &dfs) -> bool {
-            if (i == word.length()) return true;
-            if (r < 0 || r >= rows) return false;
-            if (c < 0 || c >= cols) return false;
-            if (visited.contains(to_string(r) + "," + to_string(c))) return false;
-            if (board[r][c] != word.at(i)) return false;
+            if (i == word.length())
+                return true;
+            if (r < 0 || r >= rows)
+                return false;
+            if (c < 0 || c >= cols)
+                return false;
+            if (visited.contains(to_string(r) + "," + to_string(c)))
+                return false;
+            if (board[r][c] != word.at(i))
+                return false;
             visited.insert(to_string(r) + "," + to_string(c));
-            if (dfs(r + 1, c, i + 1, dfs)) return true;
-            if (dfs(r - 1, c, i + 1, dfs)) return true;
-            if (dfs(r, c + 1, i + 1, dfs)) return true;
-            if (dfs(r, c - 1, i + 1, dfs)) return true;
+            if (dfs(r + 1, c, i + 1, dfs))
+                return true;
+            if (dfs(r - 1, c, i + 1, dfs))
+                return true;
+            if (dfs(r, c + 1, i + 1, dfs))
+                return true;
+            if (dfs(r, c - 1, i + 1, dfs))
+                return true;
             visited.erase(to_string(r) + "," + to_string(c));
             return false;
         };
 
         unordered_map<char, int> count;
-        for (char c: word) {
+        for (char c : word)
+        {
             count[c]++;
         }
 
-        if (count[word[0]] > count[word.back()]) {
+        if (count[word[0]] > count[word.back()])
+        {
             reverse(word.begin(), word.end());
         }
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                if (dfs(r, c, 0, dfs)) return true;
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                if (dfs(r, c, 0, dfs))
+                    return true;
             }
         }
         return false;
