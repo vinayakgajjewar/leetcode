@@ -1,3 +1,4 @@
+#include <iostream>
 #include <queue>
 #include <unordered_map>
 #include <vector>
@@ -120,5 +121,112 @@ class Solution
         // we know we are done when both the runnable max heap and the cooldown
         // queue are empty.
         return time;
+    }
+};
+
+// this is my solution from 2026-11-06. defining a task class is technically
+// unnecessary but i find it easier to reason about
+class task
+{
+  public:
+    char label;
+    int remaining_runs;
+    int next_runnable_time;
+
+    task(char lbl, int remaining) : label(lbl), remaining_runs(remaining), next_runnable_time(0)
+    {
+    }
+
+    // note that overloading the < operator is (imo) the easiest way to
+    // implement a custom comparator for a priority queue. you also need to
+    // remember that elements that return false (not true!) will bubble to the
+    // top of the queue. note that this function MUST BE MARKED AS CONST TO
+    // WORK.
+    bool operator<(const task &other) const
+    {
+        return (remaining_runs < other.remaining_runs);
+    }
+};
+
+// i think this solution is correct but it times out on leetcode. probably
+// because i don't implement fast-forwarding. yeah implementing fast-forwarding
+// makes it pass, but it's still relatively slow.
+class Solution
+{
+  public:
+    int leastInterval(vector<char> &tasks, int n)
+    {
+        unordered_map<char, int> freqs;
+        for (char c : tasks)
+        {
+            freqs[c]++;
+        }
+
+        priority_queue<task> runnable;
+
+        // the intuition behind using a queue for the cooldown queue is that
+        // each task has the exact same cooldown, so the order in which they
+        // come off of cooldown will match the order in which they are added to
+        // the cooldown queue. if tasks had different cooldowns, you probably
+        // would not use a queue.
+        queue<task> cooldown;
+
+        for (const auto &[c, freq] : freqs)
+        {
+            task t(c, freq);
+            runnable.push(t);
+        }
+
+        int schedule_slot = 0;
+
+        // we know we're done when both the runnable queue and the cooldown
+        // queue are empty.
+        while (!runnable.empty() || !cooldown.empty())
+        {
+
+            // if the runnable queue is not empty, "run" the best task to run
+            // right now.
+            if (!runnable.empty())
+            {
+                task curr = runnable.top();
+                cout << "Running " << curr.label << endl;
+                runnable.pop();
+                curr.remaining_runs--;
+                if (curr.remaining_runs == 0)
+                {
+                    // delete curr;
+                }
+                else
+                {
+                    curr.next_runnable_time = schedule_slot + n;
+                    cooldown.push(curr);
+                    cout << "Pushing " << curr.label << " onto cooldown queue" << endl;
+                }
+            }
+            else if (!cooldown.empty())
+            {
+                // nothing is runnable, so it is ok to fast-forward time until
+                // something in the cooldown queue becomes runnable.
+
+                schedule_slot = cooldown.front().next_runnable_time;
+            }
+
+            // check the front of the cooldown queue and see if it is ready to
+            // run. you only need to check the one task because at most one task
+            // will become runnable at each time step.
+            if (!cooldown.empty())
+            {
+                task candidate = cooldown.front();
+                if (candidate.next_runnable_time == schedule_slot)
+                {
+                    cooldown.pop();
+                    runnable.push(candidate);
+                }
+            }
+
+            schedule_slot++;
+        }
+
+        return schedule_slot;
     }
 };
