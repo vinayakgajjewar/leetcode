@@ -176,3 +176,35 @@ class Solution
         return (goal == 0);
     }
 };
+
+// This is my solution from 2026-11-06. i guess the intuition is that because
+// you can jump to any position up to a maximum distance, moving the goal to the
+// left never takes away a possible solution! which is why the greedy approach
+// works here. i think if the problem was modified so that you can only jump to
+// a particular distance, not a maximum of that distance, greedy would not work.
+// this is an interesting problem because it is not immediately obvious that the
+// best solution is greedy.
+class Solution
+{
+  public:
+    bool canJump(vector<int> &nums)
+    {
+        int n = nums.size();
+
+        int goal_pos = n - 1;
+
+        for (int i = goal_pos - 1; i >= 0; i--)
+        {
+            // check if the current position can jump to the goal. if so, move
+            // the goal to the current position.
+            if (i + nums[i] >= goal_pos)
+                goal_pos = i;
+        }
+
+        if (goal_pos == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+};
