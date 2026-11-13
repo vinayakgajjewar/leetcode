@@ -61,3 +61,44 @@ class Solution
         return back;
     }
 };
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+// This is my solution from 2026-11-13. Important to note that you need to set
+// head->next to nullptr since it is going to be the tail of the new list. It is
+// also important that you grab a pointer to the node after next so that you can
+// increment the pointers correctly.
+class Solution
+{
+  public:
+    ListNode *reverseList(ListNode *head)
+    {
+        // trivial cases
+        if (head == nullptr)
+            return nullptr;
+        if (head->next == nullptr)
+            return head;
+
+        // at this point, we know that there are at least 2 nodes.
+        ListNode *prev = head;
+        ListNode *next = head->next;
+        prev->next = nullptr;
+        while (next != nullptr)
+        {
+            ListNode *after_next = next->next;
+            next->next = prev;
+
+            prev = next;
+            next = after_next;
+        }
+        return prev;
+    }
+};

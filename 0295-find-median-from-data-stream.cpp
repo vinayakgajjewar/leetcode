@@ -5,7 +5,8 @@
 using namespace std;
 
 // This is my solution from 2026-11-09. TODO: apparently there is a faster
-// solution and i would like to know what it is
+// solution and i would like to know what it is. the time complexity of
+// findMedian() is O(1) and the time complexity of addNum() is O(log N).
 class MedianFinder
 {
   public:
