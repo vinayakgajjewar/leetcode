@@ -16,7 +16,8 @@ struct ListNode
 
 // This is my solution from 2026-11-13. Note how you need to hold temp pointers
 // to nodes you care about before you can't access them anymore. I do have a
-// feeling that there is a better way to do this problem, though.
+// feeling that there is a better way to do this problem, though, because this
+// has an O(n^2) time complexity which isn't great.
 class Solution
 {
   public:
